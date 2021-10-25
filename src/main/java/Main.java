@@ -19,7 +19,7 @@ class Main {
         private ArrayList<Food> menuList;
         private ArrayList<String> orderList;
 
-        public PizzaStore(){
+        public PizzaStore(){ // 생성자
             menuList = new ArrayList<Food>();
             String[] menuNames = {"Cheese", "Potato", "Shrimp", "Pineapple", "Meatball"};
             int[] menuPrices = {11100, 12600, 13300, 21000, 19500};
@@ -36,12 +36,13 @@ class Main {
 
         public int getTotalPrice(){
             int totalPrice = 0;
-            Iterator<String> iter = orderList.iterator();
+            Iterator<String> iter = orderList.iterator(); //Iterator 반복자
             while (iter.hasNext()) {
                 String order = iter.next();
+                System.out.println(order); //확인용
                 for(int i = 0; i < menuList.size(); i++)
                     if(order.equals(menuList.get(i).name))
-                        totalPrice += menuList.get(i).price;
+                        totalPrice += menuList.get(i).price; //get()사용
             }
             return totalPrice;
         }
@@ -56,10 +57,11 @@ class Main {
 
         return totalPrice;
     }
+
     public static void main(String[] args) {
-        Main sol = new Main();
-        String[] orderList = {"Cheese", "Pineapple", "Meatball"};
-        int ret = sol.solution(orderList);
+        Main sol = new Main();  //Main 클래스의 인스턴스 생성
+        String[] orderList = {"Cheese", "Pineapple", "Meatball"}; //string 타입의 배열 선언 및 생성
+        int ret = sol.solution(orderList); //solution 함수 호출
 
         // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
         System.out.println("solution 메소드의 반환 값은 " + ret + " 입니다.");
